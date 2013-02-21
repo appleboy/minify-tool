@@ -4,18 +4,24 @@
 # install npm command
 ##
 
+output() {
+    printf "\E[0;33;40m"
+    echo $1
+    printf "\E[0m"
+}
+
 which npm 1> /dev/null 2>&1
 if [ $? -ne 0 ]; then
-    echo '=> install nvm tool'
+    output '=> install nvm tool'
     curl https://raw.github.com/appleboy/nvm/develop/install.sh | sh
     . $HOME/.nvm/nvm.sh # This loads NVM
-    echo '=> install node.js stable version'
+    output '=> install node.js stable version'
     nvm install stable
-    echo '=> use node.js stable version'
+    output '=> use node.js stable version'
     nvm use stable
 fi
 
-echo '=> install UglifyJS 2 node-based js compressor.'
+output '=> install UglifyJS 2 node-based js compressor.'
 npm install -g uglify-js
-echo '=> install sqwish node-based CSS compressor.'
+output '=> install sqwish node-based CSS compressor.'
 npm install -g sqwish

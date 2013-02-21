@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 version="1.0"
 print_version() {
@@ -21,6 +21,12 @@ command() {
     echo "=> Please install command line tool first."
     echo "=> $ ${folder_name}/install.sh"
     exit
+}
+
+output() {
+    printf "\E[0;33;40m"
+    echo $1
+    printf "\E[0m"
 }
 
 which sqwish 1> /dev/null 2>&1
@@ -66,7 +72,8 @@ file_list=$(find $output_folder -name '*.js')
 
 for row in $file_list
 do
-    echo "compress the js file: $row"
+    echo -n "compress the js file: "
+    output $row
     uglifyjs $row -m -o $row
 done
 
@@ -75,6 +82,7 @@ file_list=$(find $output_folder -name '*.css')
 
 for row in $file_list
 do
-    echo "compress the css file: $row"
+    echo -n "compress the css file: "
+    output $row
     sqwish $row -o $row
 done
