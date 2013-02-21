@@ -8,7 +8,7 @@ which npm 1> /dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo '=> install nvm tool'
     curl https://raw.github.com/appleboy/nvm/develop/install.sh | sh
-    . ~/.nvm/nvm.sh # This loads NVM
+    . $HOME/.nvm/nvm.sh # This loads NVM
     echo '=> install node.js stable version'
     nvm install stable
     echo '=> use node.js stable version'
