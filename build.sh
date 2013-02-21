@@ -42,6 +42,7 @@ while [ $# -gt 0 ]; do
         --output | -o)
             shift
             output_folder=$1
+            shift
             ;;
         *)
             app_folder=$1
