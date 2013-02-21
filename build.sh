@@ -1,34 +1,33 @@
-#!/usr/bin/env bash
-
-which sqwish 1> /dev/null 2>&1
-if [ $? -ne 0 ]; then
-    echo '=> Please install npm tool add sqwish node-based CSS compressor.'
-    echo '=> $ npm install -g sqwish'
-    exit
-fi
-
-which uglifyjs 1> /dev/null 2>&1
-if [ $? -ne 0 ]; then
-    echo '=> Please install npm tool add uglifyjs node-based js compressor.'
-    echo '=> $ npm install -g uglify-js'
-    exit
-fi
+#!/usr/bin/env sh
 
 version="1.0"
-function print_version() {
+print_version() {
     echo "Web build tool (c) 2013 by Bo-Yi Wu, version $version"
 }
 
-function usage() {
+usage() {
     print_version
     echo
-    echo 'Usage: '$0' [[-o | --output] output_folder] app_folder'
+    echo "Usage: $0 [[-o | --output] output_folder] app_folder"
     echo "options:"
     echo "--output | -o output_folder set output build folder"
     echo "--version | -v              show version number"
     echo "--help | -h                 usage message"
     exit 0
 }
+
+command() {
+    folder_name=$(dirname $0)
+    echo "=> Please install command line tool first."
+    echo "=> $ ${folder_name}/install.sh"
+    exit
+}
+
+which sqwish 1> /dev/null 2>&1
+[ $? -ne 0 ] && command
+
+which uglifyjs 1> /dev/null 2>&1
+[ $? -ne 0 ] && command
 
 # Process command line...
 while [ $# -gt 0 ]; do
