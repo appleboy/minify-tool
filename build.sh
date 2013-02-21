@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+#########################################################
+# Date: 2013/02/21
+# Author: appleboy ( appleboy.tw AT gmail.com)
+# Web: http://blog.wu-boy.com
+#
+# Program:
+# Compress all css and js files
+# before deploying your web project.
+#########################################################
+
 version="1.0"
 print_version() {
     echo "Web build tool (c) 2013 by Bo-Yi Wu, version $version"

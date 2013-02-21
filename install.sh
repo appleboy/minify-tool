@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+#########################################################
+# Date: 2013/02/21
+# Author: appleboy ( appleboy.tw AT gmail.com)
+# Web: http://blog.wu-boy.com
+#
+# Program:
+# Install css and javascript compressor command.
+#########################################################
+
 ##
 # install npm command
 ##
