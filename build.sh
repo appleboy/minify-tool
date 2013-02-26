@@ -34,9 +34,28 @@ command() {
 }
 
 output() {
-    printf "\E[0;33;40m"
-    echo $1
+    case $2 in
+        'ok')
+            color="32"
+            ;;
+        'error')
+            color="31"
+            ;;
+        *)
+            color="33"
+            ;;
+    esac
+    printf "\E[0;${color};40m"
+    echo -n $1
     printf "\E[0m"
+}
+
+display() {
+    echo -n "["
+    output $2 $2
+    echo -n "] compress the file: "
+    output $1
+    echo
 }
 
 which sqwish 1> /dev/null 2>&1
@@ -82,9 +101,12 @@ file_list=$(find $output_folder -name '*.js')
 
 for row in $file_list
 do
-    echo -n "compress the js file: "
-    output $row
-    uglifyjs $row -m -o $row
+    uglifyjs $row -m -o $row 1> /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        display $row "error"
+    else
+        display $row "ok"
+    fi
 done
 
 # find css file
@@ -92,7 +114,10 @@ file_list=$(find $output_folder -name '*.css')
 
 for row in $file_list
 do
-    echo -n "compress the css file: "
-    output $row
-    sqwish $row -o $row
+    sqwish $row -o $row 1> /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        display $row "error"
+    else
+        display $row "ok"
+    fi
 done
