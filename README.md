@@ -1,7 +1,7 @@
 Web-build-script
 ================
 
-Compress all css and js files before deploying your web project.
+Minify all css and js files before deploying your web project.
 
 Feature
 -------------
