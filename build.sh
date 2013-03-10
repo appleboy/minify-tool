@@ -18,7 +18,7 @@ print_version() {
 usage() {
     print_version
     echo
-    echo "Usage: $0 [[-o | --output] output_folder] [app_folder|script_file]"
+    echo "Usage: $0 [[-o | --output] output_folder] [minify_path|script_file]"
     echo "options:"
     echo "--output | -o output_folder set output build folder"
     echo "--version | -v              show version number"
@@ -100,29 +100,29 @@ while [ $# -gt 0 ]; do
             shift
             ;;
         *)
-            app_folder=$1
+            minify_path=$1
             shift
             ;;
     esac
 done
 
-[ -z $app_folder ] && usage $0
-app_folder=$(echo $app_folder | sed 's/\/+$//g')
-[ -z $output_folder ] && output_folder=$app_folder
+[ -z $minify_path ] && usage $0
+minify_path=$(echo $minify_path | sed 's/\/+$//g')
+[ -z $output_folder ] && output_folder=$minify_path
 
-# copy all file to output folder if app_folder is not equal output_folder
-if [ $app_folder != $output_folder ]; then
+# copy all file to output folder if minify_path is not equal output_folder
+if [ $minify_path != $output_folder ]; then
     if [ -e $output_folder ]; then
         read -p "Do you want to delete ${output_folder} folder [y/n]: " confirm
         test $confirm = "y" -o $confirm = "Y" && rm -rf $output_folder
     fi
-    [ -e $output_folder ] && cp -arv ${app_folder}/* ${output_folder}/
-    [ -e $output_folder ] || cp -arv ${app_folder} ${output_folder}
+    [ -e $output_folder ] && cp -arv ${minify_path}/* ${output_folder}/
+    [ -e $output_folder ] || cp -arv ${minify_path} ${output_folder}
 fi
 
-if [ -f $app_folder ]; then
-    extension=$(echo $app_folder | awk -F . '{print $NF}')
-    minify_script $app_folder $extension
+if [ -f $minify_path ]; then
+    extension=$(echo $minify_path | awk -F . '{print $NF}')
+    minify_script $minify_path $extension
     exit 1;
 fi
 
