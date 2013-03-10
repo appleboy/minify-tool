@@ -27,9 +27,8 @@ usage() {
 }
 
 command() {
-    folder_name=$(dirname $0)
-    echo "=> Please install command line tool first."
-    echo "=> $ ${folder_name}/install.sh"
+    echo "=> You are not install sqwish or uglifyjs."
+    echo "=> Please install node command line tool first."
     exit
 }
 
