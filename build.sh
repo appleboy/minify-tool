@@ -112,8 +112,12 @@ app_folder=$(echo $app_folder | sed 's/\/+$//g')
 
 # copy all file to output folder if app_folder is not equal output_folder
 if [ $app_folder != $output_folder ]; then
-    [ -e $output_folder ] && rm -rf $output_folder
-    cp -arv ${app_folder} ${output_folder}
+    if [ -e $output_folder ]; then
+        read -p "Do you want to delete ${output_folder} folder [y/n]: " confirm
+        test $confirm = "y" -o $confirm = "Y" && rm -rf $output_folder
+    fi
+    [ -e $output_folder ] && cp -arv ${app_folder}/* ${output_folder}/
+    [ -e $output_folder ] || cp -arv ${app_folder} ${output_folder}
 fi
 
 if [ -f $app_folder ]; then
