@@ -17,11 +17,10 @@ Install [NPM](https://npmjs.org/) and compressor tools via the following script 
     $ git clone https://github.com/appleboy/web-build-script.git build
     $ chmod +x install.sh
     $ chmod +x build.sh
+
+Install CSS and JavaScript minify tool.
+
     $ ./install.sh
-
-Change the script permission.
-
-    $ chmod +x build.sh
 
 Usage
 -------------
