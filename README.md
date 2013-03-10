@@ -15,24 +15,28 @@ Installation
 Install [NPM](https://npmjs.org/) and compressor tools via the following script command.
 
     $ git clone https://github.com/appleboy/web-build-script.git build
-    $ chmod +x ./build/install.sh
-    $ chmod +x ./build/build.sh
-    $ ./build/install.sh
+    $ chmod +x install.sh
+    $ chmod +x build.sh
+    $ ./install.sh
+
+Change the script permission.
+
+    $ chmod +x build.sh
 
 Usage
 -------------
 
-Modified the script permission.
+Minify single css or javascript file.
 
-    $ chmod +x ./build/build.sh
+    $ ./build.sh single_file_path
 
-Deploying web project on same folder.
+Minify web project on same folder.
 
-    $ ./build/build.sh your_project_folder_path
+    $ ./build.sh your_project_folder_path
 
-Deploying web project to another folder.
+Minify web project to another folder.
 
-    $ ./build/build.sh your_project_folder_path -o output_folder_path
+    $ ./build.sh your_project_folder_path -o output_folder_path
 
 Author
 -------------
