@@ -10,7 +10,7 @@
 # before deploying your web project.
 #########################################################
 
-version="1.1"
+version='1.1'
 print_version() {
     echo "Web build tool (c) 2013 by Bo-Yi Wu, version $version"
 }
@@ -36,13 +36,13 @@ command() {
 output() {
     case $2 in
         'ok')
-            color="32"
+            color='32'
             ;;
         'error')
-            color="31"
+            color='31'
             ;;
         *)
-            color="33"
+            color='33'
             ;;
     esac
     printf "\E[0;${color};40m"
@@ -51,9 +51,9 @@ output() {
 }
 
 display() {
-    echo -n "["
+    echo -n '['
     output $2 $2
-    echo -n "] compress the file: "
+    echo -n '] compress the file: '
     output $1
     echo
 }
@@ -63,17 +63,17 @@ minify_script() {
         'js')
             uglifyjs $1 -m -o $1 1> /dev/null 2>&1
             if [ $? -ne 0 ]; then
-                display $1 "error"
+                display $1 'error'
             else
-                display $1 "ok"
+                display $1 'ok'
             fi
             ;;
         'css')
             sqwish $1 -o $1 1> /dev/null 2>&1
             if [ $? -ne 0 ]; then
-                display $1 "error"
+                display $1 'error'
             else
-                display $1 "ok"
+                display $1 'ok'
             fi
             ;;
     esac
@@ -124,7 +124,7 @@ if [ -f $app_folder ]; then
 fi
 
 # find all js and css file
-file_list=$(find $output_folder -type f -type f | grep -e "\.\(js\|css\)$")
+file_list=$(find $output_folder -type f -type f | grep -e '\.\(js\|css\)$')
 
 for row in $file_list
 do
