@@ -10,7 +10,7 @@
 # before deploying your web project.
 #########################################################
 
-version="1.0"
+version="1.1"
 print_version() {
     echo "Web build tool (c) 2013 by Bo-Yi Wu, version $version"
 }
@@ -18,7 +18,7 @@ print_version() {
 usage() {
     print_version
     echo
-    echo "Usage: $0 [[-o | --output] output_folder] app_folder"
+    echo "Usage: $0 [[-o | --output] output_folder] [app_folder|script_file]"
     echo "options:"
     echo "--output | -o output_folder set output build folder"
     echo "--version | -v              show version number"
@@ -56,6 +56,27 @@ display() {
     echo -n "] compress the file: "
     output $1
     echo
+}
+
+minify_script() {
+    case $2 in
+        'js')
+            uglifyjs $1 -m -o $1 1> /dev/null 2>&1
+            if [ $? -ne 0 ]; then
+                display $1 "error"
+            else
+                display $1 "ok"
+            fi
+            ;;
+        'css')
+            sqwish $1 -o $1 1> /dev/null 2>&1
+            if [ $? -ne 0 ]; then
+                display $1 "error"
+            else
+                display $1 "ok"
+            fi
+            ;;
+    esac
 }
 
 which sqwish 1> /dev/null 2>&1
@@ -96,28 +117,17 @@ if [ $app_folder != $output_folder ]; then
     cp -arv ${app_folder} ${output_folder}
 fi
 
-# find js file
-file_list=$(find $output_folder -name '*.js')
+if [ -f $app_folder ]; then
+    extension=$(echo $app_folder | awk -F . '{print $NF}')
+    minify_script $app_folder $extension
+    exit 1;
+fi
+
+# find all js and css file
+file_list=$(find $output_folder -type f -type f | grep -e "\.\(js\|css\)$")
 
 for row in $file_list
 do
-    uglifyjs $row -m -o $row 1> /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        display $row "error"
-    else
-        display $row "ok"
-    fi
-done
-
-# find css file
-file_list=$(find $output_folder -name '*.css')
-
-for row in $file_list
-do
-    sqwish $row -o $row 1> /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        display $row "error"
-    else
-        display $row "ok"
-    fi
+    extension=$(echo $row | awk -F . '{print $NF}')
+    minify_script $row $extension
 done
