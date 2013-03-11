@@ -6,7 +6,7 @@
 # Web: http://blog.wu-boy.com
 #
 # Program:
-# Compress all css and js files
+# Minify all css and js files
 # before deploying your web project.
 #########################################################
 
@@ -52,7 +52,7 @@ output() {
 display() {
     echo -n '['
     output $2 $2
-    echo -n '] compress the file: '
+    echo -n '] minify the file: '
     output $1
     echo
 }
