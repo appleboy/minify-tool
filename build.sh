@@ -110,7 +110,7 @@ done
 minify_path=$(echo $minify_path | sed 's/\/+$//g')
 [ -z $output_folder ] && output_folder=$minify_path
 
-# copy all file to output folder if minify_path is not equal output_folder
+# copy all file to output folder if minify_path is not equal to output_folder
 if [ $minify_path != $output_folder ]; then
     if [ -e $output_folder ]; then
         read -p "Do you want to delete ${output_folder} folder [y/n]: " confirm
@@ -120,13 +120,14 @@ if [ $minify_path != $output_folder ]; then
     [ -e $output_folder ] || cp -arv ${minify_path} ${output_folder}
 fi
 
+# check $minify_path is file or not.
 if [ -f $minify_path ]; then
     extension=$(echo $minify_path | awk -F . '{print $NF}')
     minify_script $minify_path $extension
     exit 1;
 fi
 
-# find all js and css file
+# find all js and css file according to file extension.
 file_list=$(find $output_folder -type f -type f | grep -e '\.\(js\|css\)$')
 
 for row in $file_list
