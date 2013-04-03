@@ -37,6 +37,15 @@ Minify web project to another folder.
 
     $ ./build.sh your_project_folder_path -o output_folder_path
 
+UNIX Command
+-------------
+
+Copy build.sh to /usr/bin folder
+
+    $ cp ./build.sh /usr/bin/minify
+
+Replace ``./build.sh`` with ``minify`` command.
+
 Author
 -------------
 
