@@ -6,7 +6,7 @@
 # Web: http://blog.wu-boy.com
 #
 # Program:
-# Install css and javascript compressor command.
+# Install css and javascript compressor tool.
 #########################################################
 
 ##
@@ -31,6 +31,12 @@ if [ $? -ne 0 ]; then
 fi
 
 output '=> install UglifyJS 2 node-based js compressor.'
-npm install -g uglify-js
+which uglifyjs 1> /dev/null 2>&1 || npm install -g uglify-js
 output '=> install sqwish node-based CSS compressor.'
-npm install -g sqwish
+which sqwish 1> /dev/null 2>&1 || npm install -g sqwish
+
+echo
+echo '============================================='
+echo 'Install node-based tool completely.'
+echo '============================================='
+echo
