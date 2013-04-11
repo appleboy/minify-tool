@@ -35,6 +35,11 @@ which uglifyjs 1> /dev/null 2>&1 || npm install -g uglify-js
 output '=> install sqwish node-based CSS compressor.'
 which sqwish 1> /dev/null 2>&1 || npm install -g sqwish
 
+#
+# fetch htmlcompressor java library
+[ -d ~/.htmlcompressor ] || mkdir ~/.htmlcompressor
+wget https://github.com/appleboy/html5-template-engine/raw/master/build/htmlcompressor-1.5.3.jar -O ~/.htmlcompressor/htmlcompressor-1.5.3.jar
+
 echo
 echo '============================================='
 echo 'Install node-based tool completely.'

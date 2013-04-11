@@ -75,6 +75,14 @@ minify_script() {
                 display $1 'ok'
             fi
             ;;
+        html|htm)
+            [ -f ~/.htmlcompressor/htmlcompressor-1.5.3.jar ] && java -jar ~/.htmlcompressor/htmlcompressor-1.5.3.jar --remove-intertag-spaces -o $1 $1
+            if [ $? -ne 0 ]; then
+                display $1 'error'
+            else
+                display $1 'ok'
+            fi
+            ;;
     esac
 }
 
@@ -128,7 +136,7 @@ if [ -f $minify_path ]; then
 fi
 
 # find all js and css file according to file extension.
-file_list=$(find $output_folder -type f -type f | grep -e '\.\(js\|css\)$')
+file_list=$(find $output_folder -type f -type f | grep -e '\.\(js\|css\|htm\|html\)$')
 
 for row in $file_list
 do
