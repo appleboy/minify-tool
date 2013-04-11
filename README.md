@@ -1,7 +1,7 @@
-Web-build-script
+Web Minify Tool
 ================
 
-Minify all css and js files before deploying your web project.
+Minify all html, css and js files before deploying your web project.
 
 Feature
 -------------
@@ -26,7 +26,7 @@ Install CSS and JavaScript minify tool.
 Usage
 -------------
 
-Minify single css or javascript file.
+Minify single html, css or javascript file.
 
     $ ./minify single_file_path
 
@@ -44,8 +44,6 @@ UNIX Command
 Copy minify to /usr/bin folder
 
     $ cp ./minify /usr/bin/minify
-
-Replace ``./minify`` with ``minify`` command.
 
 Author
 -------------
