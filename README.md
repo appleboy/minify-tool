@@ -8,6 +8,7 @@ Feature
 
 * JavaScript compressor: [UglifyJS](https://github.com/mishoo/UglifyJS2)
 * CSS compressor: [Sqwish](https://github.com/ded/sqwish)
+* html compressor: [htmlcompressor](http://code.google.com/p/htmlcompressor/)
 
 Installation
 -------------
@@ -16,7 +17,7 @@ Install [NPM](https://npmjs.org/) and compressor tools via the following script 
 
     $ git clone https://github.com/appleboy/web-build-script.git build
     $ chmod +x install.sh
-    $ chmod +x build.sh
+    $ chmod +x minify
 
 Install CSS and JavaScript minify tool.
 
@@ -27,24 +28,24 @@ Usage
 
 Minify single css or javascript file.
 
-    $ ./build.sh single_file_path
+    $ ./minify single_file_path
 
 Minify web project on same folder.
 
-    $ ./build.sh your_project_folder_path
+    $ ./minify your_project_folder_path
 
 Minify web project to another folder.
 
-    $ ./build.sh your_project_folder_path -o output_folder_path
+    $ ./minify your_project_folder_path -o output_folder_path
 
 UNIX Command
 -------------
 
-Copy build.sh to /usr/bin folder
+Copy minify to /usr/bin folder
 
-    $ cp ./build.sh /usr/bin/minify
+    $ cp ./minify /usr/bin/minify
 
-Replace ``./build.sh`` with ``minify`` command.
+Replace ``./minify`` with ``minify`` command.
 
 Author
 -------------
