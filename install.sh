@@ -47,6 +47,12 @@ if [ $? -ne 0 ]; then
     cd /tmp && curl -O http://www.kokkonen.net/tjko/src/jpegoptim-1.3.0.tar.gz && tar zxf jpegoptim-1.3.0.tar.gz && cd jpegoptim-1.3.0 && ./configure && make && make install
 fi
 
+# install pngcrush tool
+which pngcrush 1> /dev/null 2>&1
+if [ $? -ne 0 ]; then
+    cd /tmp && curl -O http://iweb.dl.sourceforge.net/project/pmt/pngcrush/1.7.58/pngcrush-1.7.58.tar.gz && tar zxf pngcrush-1.7.58.tar.gz && cd pngcrush-1.7.58 && make && cp -af pngcrush /usr/local/bin
+fi
+
 #
 # fetch htmlcompressor java library
 [ -d ~/.htmlcompressor ] || mkdir ~/.htmlcompressor
