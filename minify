@@ -75,6 +75,9 @@ minify_script() {
                 display $1 'ok'
             fi
             ;;
+        'image')
+            image_optim $1/*.{jpg,png,gif}
+            ;;
         html|htm)
             [ -f ~/.htmlcompressor/htmlcompressor-1.5.3.jar ] && java -jar ~/.htmlcompressor/htmlcompressor-1.5.3.jar --remove-intertag-spaces -o $1 $1
             if [ $? -ne 0 ]; then
@@ -107,6 +110,11 @@ while [ $# -gt 0 ]; do
             output_folder=$1
             shift
             ;;
+        --type | -t)
+            shift
+            minify_type=$1
+            shift
+            ;;
         *)
             minify_path=$1
             shift
@@ -128,6 +136,13 @@ if [ $minify_path != $output_folder ]; then
     [ -e $output_folder ] || cp -arv ${minify_path} ${output_folder}
 fi
 
+case $minify_type in
+    'image')
+        minify_script $minify_path $minify_type
+        exit 1;
+        ;;
+esac
+
 # check $minify_path is file or not.
 if [ -f $minify_path ]; then
     extension=$(echo $minify_path | awk -F . '{print $NF}')
@@ -136,7 +151,7 @@ if [ -f $minify_path ]; then
 fi
 
 # find all js and css file according to file extension.
-file_list=$(find $output_folder -type f -type f | grep -e '\.\(js\|css\|htm\|html\)$')
+file_list=$(find $output_folder -type f | grep -e '\.\(js\|css\|htm\|html\)$')
 
 for row in $file_list
 do
