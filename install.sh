@@ -9,6 +9,8 @@
 # Install css and javascript compressor tool.
 #########################################################
 
+machine=$(shell uname -m)
+
 ##
 # install npm command
 ##
@@ -51,6 +53,17 @@ fi
 which pngcrush 1> /dev/null 2>&1
 if [ $? -ne 0 ]; then
     cd /tmp && curl -O http://iweb.dl.sourceforge.net/project/pmt/pngcrush/1.7.58/pngcrush-1.7.58.tar.gz && tar zxf pngcrush-1.7.58.tar.gz && cd pngcrush-1.7.58 && make && cp -af pngcrush /usr/local/bin
+fi
+
+# install pngout tool
+which pngout 1> /dev/null 2>&1
+if [ $? -ne 0 ]; then
+    cd /tmp && curl -O http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz && tar zxf pngout-20130221-linux.tar.gz
+    case $machine in
+        'x86_64')
+            cd /tmp/pngout-20130221-linux && cp -rf x86_64/pngout /usr/local/bin
+        ;;
+    esac
 fi
 
 #
