@@ -66,6 +66,10 @@ if [ $? -ne 0 ]; then
     esac
 fi
 
+# install Optimize images using multiple utilities
+# ref: https://github.com/toy/image_optim
+gem install image_optim
+
 #
 # fetch htmlcompressor java library
 [ -d ~/.htmlcompressor ] || mkdir ~/.htmlcompressor
