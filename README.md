@@ -8,23 +8,28 @@ Feature
 
 * JavaScript compressor: [UglifyJS](https://github.com/mishoo/UglifyJS2)
 * CSS compressor: [Sqwish](https://github.com/ded/sqwish)
-* html compressor: [htmlcompressor](http://code.google.com/p/htmlcompressor/)
+* Html compressor: [htmlcompressor](http://code.google.com/p/htmlcompressor/)
+* Optimize images: [image_optim](https://github.com/toy/image_optim)
 
 Installation
 -------------
 
 Install [NPM](https://npmjs.org/) and compressor tools via the following script command.
 
-    $ git clone https://github.com/appleboy/web-build-script.git build
+    $ git clone https://github.com/appleboy/minify-tool.git build
     $ chmod +x install.sh
     $ chmod +x minify
 
-Install CSS and JavaScript minify tool.
+Install Html, CSS and JavaScript minify tool.
 
     $ ./install.sh
 
 Usage
 -------------
+
+Minify image files (include *.jpg, *.png, *.gif).
+
+    $ ./minify -t image image_folder_path
 
 Minify single html, css or javascript file.
 
