@@ -9,7 +9,7 @@
 # Install css and javascript compressor tool.
 #########################################################
 
-machine=$(shell uname -m)
+machine=$(uname -m)
 
 ##
 # install npm command
@@ -62,7 +62,7 @@ if [ $? -ne 0 ]; then
     case $machine in
         'x86_64')
             cd /tmp/pngout-20130221-linux && cp -rf x86_64/pngout /usr/local/bin
-        ;;
+            ;;
     esac
 fi
 
