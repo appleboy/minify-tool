@@ -34,6 +34,10 @@ output '=> install UglifyJS 2 node-based js compressor.'
 which uglifyjs 1> /dev/null 2>&1 || npm install -g uglify-js
 output '=> install sqwish node-based CSS compressor.'
 which sqwish 1> /dev/null 2>&1 || npm install -g sqwish
+output '=> install image optimize tool for Linux - Debian/Ubuntu.'
+which aptitude 1> /dev/null 2>&1 && sudo aptitude -y install advancecomp gifsicle jpegoptim libjpeg-progs optipng pngcrush
+output '=> install image optimize tool for Linux - RHEL/Fedora/Centos.'
+which yum 1> /dev/null 2>&1 && sudo yum install -y advancecomp gifsicle libjpeg optipng
 
 #
 # fetch htmlcompressor java library
