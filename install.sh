@@ -40,9 +40,12 @@ output '=> install image optimize tool for Linux - RHEL/Fedora/Centos.'
 which yum 1> /dev/null 2>&1 && sudo yum install -y advancecomp gifsicle libjpeg optipng
 
 # install jpegoptim tool
-which aptitude 1> /dev/null 2>&1 && aptitude -y install libjpeg8 libjpeg8-dev
-which yum 1> /dev/null 2>&1 && yum install -y libjpeg-turbo-devel
-cd /tmp && curl -O http://www.kokkonen.net/tjko/src/jpegoptim-1.3.0.tar.gz && tar zxf jpegoptim-1.3.0.tar.gz && cd jpegoptim-1.3.0 && ./configure && make && make install
+which jpegoptim 1> /dev/null 2>&1
+if [ $? -ne 0 ]; then
+    which aptitude 1> /dev/null 2>&1 && aptitude -y install libjpeg8 libjpeg8-dev
+    which yum 1> /dev/null 2>&1 && yum install -y libjpeg-turbo-devel
+    cd /tmp && curl -O http://www.kokkonen.net/tjko/src/jpegoptim-1.3.0.tar.gz && tar zxf jpegoptim-1.3.0.tar.gz && cd jpegoptim-1.3.0 && ./configure && make && make install
+fi
 
 #
 # fetch htmlcompressor java library
