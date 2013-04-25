@@ -18,11 +18,12 @@ print_version() {
 usage() {
     print_version
     echo
-    echo "Usage: $0 [[-o | --output] output_folder] [minify_path|script_file]"
+    echo "Usage: $0 [-t image] [[-o | --output] output_folder] [folder_path|file_path]"
     echo "options:"
-    echo "--output | -o output_folder set output build folder"
-    echo "--version | -v              show version number"
-    echo "--help | -h                 usage message"
+    echo "--type | -t [image]   optimize images"
+    echo "--output | -o         output_folder set output build folder"
+    echo "--version | -v        show version number"
+    echo "--help | -h           usage message"
     exit 0
 }
 
