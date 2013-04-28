@@ -1,7 +1,7 @@
 Web Minify Tool
 ================
 
-Minify all html, css and js files before deploying your web project.
+Minify all html, css, js and optimize image files for web project.
 
 Feature
 -------------
