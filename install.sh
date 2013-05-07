@@ -79,7 +79,9 @@ which sqwish 1> /dev/null 2>&1 || npm install -g sqwish
 [ -f ~/.htmlcompressor/htmlcompressor-1.5.3.jar ] || wget https://github.com/appleboy/html5-template-engine/raw/master/build/htmlcompressor-1.5.3.jar -O ~/.htmlcompressor/htmlcompressor-1.5.3.jar
 
 # install ruby image optimize tool
-install_image_optim
+output '=> install image optimize tool.'
+which image_optim 1> /dev/null 2>&1
+[ $? -ne 0 ] && install_image_optim
 
 echo
 echo '============================================='
