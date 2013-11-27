@@ -18,7 +18,6 @@ Install [NPM](https://npmjs.org/) and compressor tools via the following script 
 
     $ git clone https://github.com/appleboy/minify-tool.git build
     $ cd build && chmod +x install.sh minify
-    $ cp -r build/minify /usr/bin/
 
 Install Html, CSS and JavaScript minify tool.
 
