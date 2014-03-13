@@ -61,12 +61,12 @@ install_image_optim() {
 which npm 1> /dev/null 2>&1
 if [ $? -ne 0 ]; then
     output '=> install nvm tool'
-    curl https://raw.github.com/appleboy/nvm/develop/install.sh | sh
+    curl https://raw.github.com/creationix/nvm/master/install.sh | sh
     . $HOME/.nvm/nvm.sh # This loads NVM
     output '=> install node.js stable version'
-    nvm install stable
+    nvm install 0.10.26
     output '=> use node.js stable version'
-    nvm use stable
+    nvm use 0.10.26
 fi
 
 output '=> install UglifyJS 2 node-based js compressor.'
