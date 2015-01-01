@@ -64,9 +64,9 @@ if [ $? -ne 0 ]; then
     curl https://raw.github.com/creationix/nvm/master/install.sh | sh
     . $HOME/.nvm/nvm.sh # This loads NVM
     output '=> install node.js stable version'
-    nvm install 0.10.33
+    nvm install 0.10.35
     output '=> use node.js stable version'
-    nvm use 0.10.33
+    nvm use 0.10.35
 fi
 
 # ref: https://github.com/mishoo/UglifyJS2
