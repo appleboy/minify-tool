@@ -28,7 +28,7 @@ usage() {
 }
 
 command() {
-    echo "=> You are not install sqwish or uglifyjs."
+    echo "=> You are not install csso or uglifyjs."
     echo "=> Please install node command line tool first."
     exit
 }
@@ -69,7 +69,7 @@ minify_script() {
             fi
             ;;
         'css')
-            sqwish $1 -o $1 1> /dev/null 2>&1
+            csso -i $1 -o $1 1> /dev/null 2>&1
             if [ $? -ne 0 ]; then
                 display $1 'error'
             else
@@ -90,7 +90,7 @@ minify_script() {
     esac
 }
 
-which sqwish 1> /dev/null 2>&1
+which csso 1> /dev/null 2>&1
 [ $? -ne 0 ] && command
 
 which uglifyjs 1> /dev/null 2>&1

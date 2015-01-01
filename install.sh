@@ -6,7 +6,7 @@
 # Web: http://blog.wu-boy.com
 #
 # Program:
-# Install css and javascript compressor tool.
+# Install css, javascript and compressor tool.
 #########################################################
 
 machine=$(uname -m)
@@ -71,8 +71,8 @@ fi
 
 output '=> install UglifyJS 2 node-based js compressor.'
 which uglifyjs 1> /dev/null 2>&1 || npm install -g uglify-js
-output '=> install sqwish node-based CSS compressor.'
-which sqwish 1> /dev/null 2>&1 || npm install -g sqwish
+output '=> install CSSO CSS Optimizer.'
+which csso 1> /dev/null 2>&1 || npm install -g csso
 
 # fetch htmlcompressor java library
 [ -d ~/.htmlcompressor ] || mkdir ~/.htmlcompressor
