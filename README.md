@@ -8,7 +8,7 @@ Feature
 
 * JavaScript compressor: [UglifyJS](https://github.com/mishoo/UglifyJS2)
 * CSS optimizer: [CSSO](https://www.npmjs.com/package/csso)
-* Html compressor: [htmlcompressor](http://code.google.com/p/htmlcompressor/)
+* HTML compressor/minifie: [HTML compressor](https://github.com/kangax/html-minifier)
 * Optimize images: [image_optim](https://github.com/toy/image_optim)
 
 Installation
