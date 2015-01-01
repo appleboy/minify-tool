@@ -80,7 +80,7 @@ minify_script() {
             image_optim $1/*.{jpg,png,gif}
             ;;
         html|htm|handlebars)
-            html-minifier --minify-js --minify-css --remove-comments --collapse-whitespace $1 -o $1
+            html-minifier --minify-js --minify-css --remove-comments --collapse-whitespace --remove-comments-from-cdata $1 -o $1
             if [ $? -ne 0 ]; then
                 display $1 'error'
             else
