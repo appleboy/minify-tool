@@ -64,19 +64,22 @@ if [ $? -ne 0 ]; then
     curl https://raw.github.com/creationix/nvm/master/install.sh | sh
     . $HOME/.nvm/nvm.sh # This loads NVM
     output '=> install node.js stable version'
-    nvm install 0.10.26
+    nvm install 0.10.33
     output '=> use node.js stable version'
-    nvm use 0.10.26
+    nvm use 0.10.33
 fi
 
+# ref: https://github.com/mishoo/UglifyJS2
 output '=> install UglifyJS 2 node-based js compressor.'
 which uglifyjs 1> /dev/null 2>&1 || npm install -g uglify-js
+
+# ref: https://www.npmjs.com/package/csso
 output '=> install CSSO CSS Optimizer.'
 which csso 1> /dev/null 2>&1 || npm install -g csso
 
-# fetch htmlcompressor java library
-[ -d ~/.htmlcompressor ] || mkdir ~/.htmlcompressor
-[ -f ~/.htmlcompressor/htmlcompressor-1.5.3.jar ] || wget https://htmlcompressor.googlecode.com/files/htmlcompressor-1.5.3.jar -O ~/.htmlcompressor/htmlcompressor-1.5.3.jar
+# ref: https://github.com/kangax/html-minifier
+output '=> install HTML compressor/minifie.'
+which html-minifier 1> /dev/null 2>&1 || npm install -g html-minifier
 
 # install ruby image optimize tool
 output '=> install image optimize tool.'
